@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['./src/index.ts'],
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
     // this is required when using react-native-navigation
     new webpack.DefinePlugin({
-      '__DEV__': false,
+      __DEV__: false,
     }),
   ],
   output: {
@@ -21,9 +21,17 @@ module.exports = {
     alias: {
       'react-native$': 'react-native-web',
     },
+    extensions: ['.ts', '.tsx', '.js', '.json']
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: 'awesome-typescript-loader',
+        },
+      },
+      /*{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },*/
       {
         // reat-native libraries should be build with babel
         test: /\.js$/,
@@ -55,8 +63,8 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         use: {
           loader: 'file-loader',
-        }
-      }
+        },
+      },
     ],
   },
 };
