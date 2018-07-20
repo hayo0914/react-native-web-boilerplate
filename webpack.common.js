@@ -31,7 +31,7 @@ module.exports = {
           loader: 'awesome-typescript-loader',
         },
       },
-      /*{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },*/
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         // reat-native libraries should be build with babel
         test: /\.js$/,
