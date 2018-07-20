@@ -1,0 +1,13 @@
+# meta data on mac
+.DS_Store
+
+# dependencies
+node_modules
+flow-typed
+
+# distribution dir
+dist
+
+# log files
+*.log
+
